@@ -1,0 +1,62 @@
+#include<stdio.h>
+void welcome();
+void displayamount(int amount);
+int getwithdrawalamount();
+int calculatebalance(int currentbalance,int withdrawalamount);
+int checkwithdrawal(int currentbalance,int withdrawalamount,int maxlimit);
+int main(){
+    int accountbalance=75000;
+    int useramount=0;
+    int limit=0;
+    int checkresult;
+    welcome();
+    limit=getwithdrawalamount();
+    printf("yourcurrent amount is %d",accountbalance);
+    printf("the max allowed limit is %d",limit);
+    printf("enter the withdrawal  amount");
+    scanf("%d",&useramount);
+    checkresult=checkwithdrawal(accountbalance,useramount,limit);
+    if(checkresult==1){
+        printf("\n transaction successfully");
+     
+     displayamount(useramount);
+     accountbalance=calculatebalance(accountbalance,useramount);
+     printf("remaining currentblance %d",accountbalance);
+    }
+    else{
+        printf("Transaction denied");
+        printf("Error! invalid withdrawalamount");
+        printf("please the withdrawal amount is greater than 0 ");
+        printf("balance with in the RS50000  MAX LIMIT");
+
+    }
+    printf("\n thank you for using our ATM");
+    return 0;
+}
+void welcome(){
+    printf("welcome to the ATM system");
+}
+void displayamount(int amount){
+    printf("the amount is %d",amount);
+}
+    int getwithdrawalamount(){
+    return 50000;
+    }
+    int calculatebalance(int currentbalance,int withdrawalamount){
+        int remaining=currentbalance-withdrawalamount;
+        return remaining;
+
+    }
+    int checkwithdrawal(int currentbalance,int withdrawalamount,int maxlimit){
+        if(withdrawalamount>0 && withdrawalamount<=currentbalance && withdrawalamount<=maxlimit){
+            return 1;
+        }
+else{
+    return 0;
+}
+    }
+
+
+
+
+
